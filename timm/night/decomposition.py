@@ -2184,6 +2184,7 @@ def overlay_colored_grid(
     image_concats=None,
     image_concats_right=None,
     overlay_alone_p=True,
+    overlay_nonscaled_p=True,
     rank_mode="overlay_alone",
     figure_size_scale=3,
     color_negative=(255, 0, 0),
@@ -2414,7 +2415,7 @@ def overlay_colored_grid(
                 color_negative,
             )
 
-    if not pixel_p:
+    if not pixel_p and overlay_nonscaled_p:
         #: Create an empty image with the same size as the original image and a transparent background
         overlay_image = Image.new("RGBA", image_natural_pil.size, (0, 0, 0, 0))
         draw = ImageDraw.Draw(overlay_image)
